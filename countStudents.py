@@ -19,3 +19,16 @@ class Solution:
                 rejected += 1
         
         return len(queue)
+
+    def countStudentsOptimal(self, students: List[int], sandwiches: List[int]) -> int:
+        count = [0, 0]
+        for i in students:
+            count[i] += 1
+
+        for sandwich in sandwiches:
+            if count[sandwich] > 0:
+                count[sandwich] -= 1
+            else:
+                break
+
+        return count[0] + count[1]
